@@ -1,0 +1,94 @@
+
+openapi: 3.0.3
+info:
+  title: Change API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8092
+paths:
+  /change/risk:
+    post:
+      summary: Calculate risk for a change
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+      responses:
+        '200':
+          description: Risk analysis result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /change/summary:
+    post:
+      summary: Get change summary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Summary data
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /change/similar:
+    post:
+      summary: Find similar changes
+      parameters:
+        - in: query
+          name: threshold
+          schema:
+            type: number
+          required: false
+          description: Similarity threshold
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Similar changes found
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /change/history:
+    post:
+      summary: Get change history
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+      responses:
+        '200':
+          description: Change history result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true

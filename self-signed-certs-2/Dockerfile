@@ -11,7 +11,7 @@ COPY certs/ certs/
 RUN go build -o https-server main.go
 
 # 2. Runtime stage
-FROM alpine:latest
+FROM tehilathestudent/net-tools
 
 WORKDIR /app
 
